@@ -18,7 +18,9 @@
 package org.apache.dubbo.samples.version;
 
 import org.apache.dubbo.common.Version;
+import org.apache.dubbo.common.extension.ExtensionLoader;
 import org.apache.dubbo.config.annotation.DubboReference;
+import org.apache.dubbo.remoting.Transporter;
 import org.apache.dubbo.samples.version.api.VersionService;
 import org.apache.dubbo.spring.boot.autoconfigure.DubboAutoConfiguration;
 import org.junit.Assert;
@@ -43,6 +45,8 @@ public class VersionServiceStarIT {
 
     @Test
     public void test() throws Exception {
+        //拓展是成功的
+        System.out.println(ExtensionLoader.getExtensionLoader(Transporter.class).getExtension("myNetty"));
         for (int i = 0; i < 10; i++) {
             System.out.println("transporter connected count: " + MyNettyTransporter.getConnectedCount());
             if (2 == MyNettyTransporter.getConnectedCount()) {
