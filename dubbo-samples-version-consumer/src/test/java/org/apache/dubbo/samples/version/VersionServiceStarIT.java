@@ -31,9 +31,9 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@ContextConfiguration(locations = {"classpath:/spring/version-consumer-star.xml"})
+//@ContextConfiguration(locations = {"classpath:/spring/version-consumer-star.xml"}) //使用spring配置client生效
 public class VersionServiceStarIT {
-//    @DubboReference(version = "*", loadbalance = "roundrobin", client = "myNetty")
+    @DubboReference(version = "*", loadbalance = "roundrobin", client = "myNetty")
     private VersionService service;
 
     @BeforeClass
